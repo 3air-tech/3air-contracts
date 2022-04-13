@@ -81,6 +81,8 @@ contract Vesting is Ownable {
 
         (totalTokens, initialTokens, releasableTokens) = claimableTokensForTerm(msg.sender, termId);
 
+        require(totalTokens > 0, 'No 3air available for claiming');
+
         if (initialTokens > 0) {
             vestingTerms[msg.sender][termId].initialTokensClaimed = true;
         }
