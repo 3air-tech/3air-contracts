@@ -11,6 +11,12 @@ async function main() {
 
   await vesting.deployed();
 
+  const transferTx = await airToken.transfer(
+    vesting.address,
+    ethers.utils.parseUnits("830000000")
+  );
+  await transferTx.wait();
+
   console.log("3AIR deployed to:", airToken.address);
   console.log("Vesting deployed to:", vesting.address);
 }
